@@ -29,7 +29,7 @@
         }
         ({config, ...}: {
           home.file = {
-            ".config/home-manager/flake.nix".source = config.lib.file.mkOutOfStoreSymlink builtins.toString ./.;
+            ".config/home-manager/flake.nix".source = config.lib.file.mkOutOfStoreSymlink (builtins.toString ./.);
           };
         })
       ];
