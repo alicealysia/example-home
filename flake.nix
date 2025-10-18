@@ -22,17 +22,20 @@
         ./keyboard-shortcuts.nix
         #home-defaults.homeConfigurations.default
         {
-          home.username = "alice";
-          home.homeDirectory = "/home/alice";
           home.stateVersion = "25.05";
           programs.home-manager.enable = true;
           home.sessionVariables = import ./variables.nix;
           programs.niri.settings.outputs = import ./monitors.nix;
         }
+        ({config, ...}: {
+          home.file = {
+            ".config/home-manager/flake.nix".source = config.lib.file.mkOutOfStoreSymlink builtins.toString ./.;
+          };
+        })
       ];
     in
     {
-      homeConfigurations."alice" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = home-defaults.homeModules ++ user-modules;
