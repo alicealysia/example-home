@@ -15,10 +15,8 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, home-defaults, ... }:
+    { home-manager, home-defaults, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
       user-modules = [
         ./apps.nix
         ./keyboard-shortcuts.nix
@@ -35,7 +33,6 @@
     in
     {
       homeConfigurations."alice" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = home-defaults.homeModules ++ user-modules;
