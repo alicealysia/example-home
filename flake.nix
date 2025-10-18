@@ -27,12 +27,6 @@
           home.sessionVariables = import ./variables.nix;
           programs.niri.settings.outputs = import ./monitors.nix;
         }
-        ({config, ...}: {
-          home.file = {
-            "/home/example/.config/home-manager/".force = true;
-            "/home/example/.config/home-manager/".source = config.lib.file.mkOutOfStoreSymlink (builtins.toString ./.);          
-          };
-        })
       ];
     in
     {
