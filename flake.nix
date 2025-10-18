@@ -29,7 +29,8 @@
         }
         ({config, ...}: {
           home.file = {
-            ".config/home-manager".source = config.lib.file.mkOutOfStoreSymlink (builtins.toString ./.);
+            "/home/example/.config/home-manager/".force = true;
+            "/home/example/.config/home-manager/".source = config.lib.file.mkOutOfStoreSymlink (builtins.toString ./.);          
           };
         })
       ];
