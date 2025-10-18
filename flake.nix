@@ -21,7 +21,6 @@
       pkgs = nixpkgs.legacyPackages.${system};
       user-modules = [
         ./apps.nix
-        ./git.nix
         ./keyboard-shortcuts.nix
         #home-defaults.homeConfigurations.default
         {
